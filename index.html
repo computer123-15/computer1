@@ -3,103 +3,254 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>معرض إبداع الطالبات</title>
+<title>معرض الإبداع التقني</title>
+
 <style>
 * {box-sizing:border-box}
+
 body {
  margin:0;
  font-family:Tahoma,Arial,sans-serif;
  background:#071426;
  color:white;
 }
+
 header {
  text-align:center;
  padding:65px 20px;
  background:linear-gradient(135deg,#102d4c,#087e91);
 }
-header h1 {font-size:35px;margin:10px}
-header p {color:#d5f6ff}
-.container {max-width:1100px;margin:auto;padding:30px 20px}
-.stats {text-align:center;color:#55e4ed;margin:15px}
-.search {
- width:100%;padding:14px;border-radius:12px;
- border:1px solid #28516b;background:#10243b;
- color:white;font-size:16px;margin:20px 0;
+
+header .logo {font-size:42px}
+header h1 {font-size:34px;margin:12px}
+header h2 {font-size:21px;color:#b9f4f5}
+header p {color:#e0f7fa;line-height:1.8}
+
+.container {
+ max-width:1150px;
+ margin:auto;
+ padding:35px 20px;
 }
+
+.intro {text-align:center;margin-bottom:30px}
+.intro h2 {color:#61e5ed}
+
+.search {
+ width:100%;
+ padding:15px;
+ border-radius:12px;
+ border:1px solid #28516b;
+ background:#10243b;
+ color:white;
+ font-size:16px;
+ margin:20px 0 30px;
+}
+
+.search::placeholder {color:#a9bdcb}
+
 .projects {
  display:grid;
- grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
- gap:20px;
+ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+ gap:22px;
 }
+
 .card {
- background:#10243b;border:1px solid #24516b;
- border-radius:16px;overflow:hidden;
+ background:#10243b;
+ border:1px solid #24516b;
+ border-radius:16px;
+ overflow:hidden;
+ transition:.3s;
 }
-.card img {width:100%;height:160px;object-fit:cover}
+
+.card:hover {
+ transform:translateY(-5px);
+ border-color:#55e4ed;
+}
+
+.card img {
+ width:100%;
+ height:185px;
+ object-fit:cover;
+}
+
 .card-content {padding:18px}
-.card h3 {color:#62e5ed}
-.card p {color:#c1d2df;line-height:1.8}
-.card a {
- display:inline-block;background:#087e91;color:white;
- padding:10px 18px;border-radius:8px;
- text-decoration:none;
+.card h3 {color:#62e5ed;margin-top:0}
+.card p {color:#c1d2df;line-height:1.8;font-size:14px}
+
+.student {
+ color:#6de4ed !important;
+ font-weight:bold;
 }
-footer {text-align:center;padding:30px;color:#9db7c9}
+
+.card a {
+ display:block;
+ text-align:center;
+ background:#087e91;
+ color:white;
+ padding:12px;
+ border-radius:9px;
+ text-decoration:none;
+ margin-top:15px;
+}
+
+.card a:hover {background:#0aa2b3}
+
+.empty {
+ display:none;
+ text-align:center;
+ color:#b9f4f5;
+ padding:30px;
+}
+
+footer {
+ text-align:center;
+ padding:35px 15px;
+ background:#0c2036;
+ color:#a9bdcb;
+ line-height:2;
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>✨ معرض إبداع الطالبات</h1>
-<p>مساحة رقمية نعرض فيها الإبداع والابتكار والتميز</p>
-<p>مشاريع تقنية • ذكاء اصطناعي • برمجة • ابتكار</p>
+ <div class="logo">💡</div>
+ <h1>معرض الإبداع التقني</h1>
+ <h2>الثانوية الخامسة عشرة</h2>
+ <p>نبدع اليوم لنصنع تقنيات المستقبل</p>
+ <p>منصة رقمية لعرض مشاريع وإبداعات الطالبات</p>
 </header>
 
-<div class="container">
-<h2>استكشف مشاريعنا</h2>
-<div class="stats">مشاريعنا الإبداعية</div>
+<main class="container">
 
-<input class="search" id="search"
-placeholder="ابحثي عن مشروع..."
-oninput="searchProjects()">
+ <div class="intro">
+  <h2>مشاريع الطالبات</h2>
+  <p>نفخر بإبداعات طالباتنا وإنجازاتهن التقنية</p>
+  <h3 id="count">عدد المشاريع: 0</h3>
+ </div>
 
-<div class="projects" id="projects">
+ <input
+  class="search"
+  id="search"
+  type="text"
+  placeholder="🔍 ابحثي باسم المشروع أو الطالبة..."
+ >
 
-<div class="card">
-<img src="https://placehold.co/600x350/102d4c/55e4ed?text=AI+Project">
-<div class="card-content">
-<h3>مشروع الذكاء الاصطناعي</h3>
-<p>اسم الطالبة: يضاف هنا</p>
-<p>وصف المشروع: اكتبي نبذة عن فكرة المشروع.</p>
-<a href="#" target="_blank">عرض المشروع</a>
-</div>
-</div>
+ <div class="projects" id="projects"></div>
+ <div class="empty" id="empty">لا توجد مشاريع مطابقة للبحث.</div>
 
-<div class="card">
-<img src="https://placehold.co/600x350/102d4c/55e4ed?text=App+Project">
-<div class="card-content">
-<h3>مشروع تطبيق إلكتروني</h3>
-<p>اسم الطالبة: يضاف هنا</p>
-<p>وصف المشروع: اكتبي نبذة عن فكرة المشروع.</p>
-<a href="#" target="_blank">عرض المشروع</a>
-</div>
-</div>
-
-</div>
-</div>
+</main>
 
 <footer>
-<p>معرض إبداع الطالبات © 2026</p>
-<p>إشراف المعلمة</p>
+ <p>إشراف وتنفيذ المعلمة ريم الحارثي</p>
+ <p>الثانوية الخامسة عشرة</p>
+ <p>معرض الإبداع التقني © 2026</p>
 </footer>
 
 <script>
-function searchProjects(){
- let value=document.getElementById("search").value.toLowerCase();
- document.querySelectorAll(".card").forEach(card=>{
- card.style.display=card.innerText.toLowerCase().includes(value)?"block":"none";
+
+// أضيفي مشاريع الطالبات هنا
+
+const projects = [
+
+ {
+  title: "قطرة الحياة",
+  student: "اسم الطالبة",
+  description: "تطبيق توعوي يساهم في ترشيد استهلاك المياه والمحافظة على الموارد.",
+  image: "https://placehold.co/600x350/102d4c/55e4ed?text=Water+Project",
+  link: "#"
+ },
+
+ {
+  title: "مشروع الذكاء الاصطناعي",
+  student: "اسم الطالبة",
+  description: "مشروع مبتكر يوظف تقنيات الذكاء الاصطناعي في خدمة المجتمع.",
+  image: "https://placehold.co/600x350/102d4c/55e4ed?text=AI+Project",
+  link: "#"
+ },
+
+ {
+  title: "تطبيق إلكتروني",
+  student: "اسم الطالبة",
+  description: "تطبيق برمجي يقدم خدمة رقمية بطريقة سهلة ومبتكرة.",
+  image: "https://placehold.co/600x350/102d4c/55e4ed?text=App+Project",
+  link: "#"
+ }
+
+];
+
+// عرض المشاريع تلقائياً
+
+const projectsContainer = document.getElementById("projects");
+
+function displayProjects(list) {
+
+ projectsContainer.innerHTML = "";
+
+ document.getElementById("count").textContent =
+ "عدد المشاريع: " + list.length;
+
+ document.getElementById("empty").style.display =
+ list.length === 0 ? "block" : "none";
+
+ list.forEach(project => {
+
+  const card = document.createElement("div");
+  card.className = "card";
+
+  const img = document.createElement("img");
+  img.src = project.image;
+  img.alt = project.title;
+  img.onerror = function() {
+   this.src = "https://placehold.co/600x350/102d4c/55e4ed?text=Student+Project";
+  };
+
+  const content = document.createElement("div");
+  content.className = "card-content";
+
+  const title = document.createElement("h3");
+  title.textContent = project.title;
+
+  const student = document.createElement("p");
+  student.className = "student";
+  student.textContent = "الطالبة: " + project.student;
+
+  const description = document.createElement("p");
+  description.textContent = project.description;
+
+  const link = document.createElement("a");
+  link.href = project.link;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = "عرض المشروع";
+
+  content.append(title, student, description, link);
+  card.append(img, content);
+  projectsContainer.appendChild(card);
+
  });
+
 }
+
+displayProjects(projects);
+
+// البحث
+
+document.getElementById("search").addEventListener("input", function() {
+
+ const value = this.value.trim().toLowerCase();
+
+ const filtered = projects.filter(project =>
+  project.title.toLowerCase().includes(value) ||
+  project.student.toLowerCase().includes(value) ||
+  project.description.toLowerCase().includes(value)
+ );
+
+ displayProjects(filtered);
+
+});
+
 </script>
 
 </body>
