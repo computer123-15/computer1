@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معرض إبداع الطالبات</title>
+<style>
+* {box-sizing:border-box}
+body {
+ margin:0;
+ font-family:Tahoma,Arial,sans-serif;
+ background:#071426;
+ color:white;
+}
+header {
+ text-align:center;
+ padding:65px 20px;
+ background:linear-gradient(135deg,#102d4c,#087e91);
+}
+header h1 {font-size:35px;margin:10px}
+header p {color:#d5f6ff}
+.container {max-width:1100px;margin:auto;padding:30px 20px}
+.stats {text-align:center;color:#55e4ed;margin:15px}
+.search {
+ width:100%;padding:14px;border-radius:12px;
+ border:1px solid #28516b;background:#10243b;
+ color:white;font-size:16px;margin:20px 0;
+}
+.projects {
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+ gap:20px;
+}
+.card {
+ background:#10243b;border:1px solid #24516b;
+ border-radius:16px;overflow:hidden;
+}
+.card img {width:100%;height:160px;object-fit:cover}
+.card-content {padding:18px}
+.card h3 {color:#62e5ed}
+.card p {color:#c1d2df;line-height:1.8}
+.card a {
+ display:inline-block;background:#087e91;color:white;
+ padding:10px 18px;border-radius:8px;
+ text-decoration:none;
+}
+footer {text-align:center;padding:30px;color:#9db7c9}
+</style>
+</head>
+<body>
+
+<header>
+<h1>✨ معرض إبداع الطالبات</h1>
+<p>مساحة رقمية نعرض فيها الإبداع والابتكار والتميز</p>
+<p>مشاريع تقنية • ذكاء اصطناعي • برمجة • ابتكار</p>
+</header>
+
+<div class="container">
+<h2>استكشف مشاريعنا</h2>
+<div class="stats">مشاريعنا الإبداعية</div>
+
+<input class="search" id="search"
+placeholder="ابحثي عن مشروع..."
+oninput="searchProjects()">
+
+<div class="projects" id="projects">
+
+<div class="card">
+<img src="https://placehold.co/600x350/102d4c/55e4ed?text=AI+Project">
+<div class="card-content">
+<h3>مشروع الذكاء الاصطناعي</h3>
+<p>اسم الطالبة: يضاف هنا</p>
+<p>وصف المشروع: اكتبي نبذة عن فكرة المشروع.</p>
+<a href="#" target="_blank">عرض المشروع</a>
+</div>
+</div>
+
+<div class="card">
+<img src="https://placehold.co/600x350/102d4c/55e4ed?text=App+Project">
+<div class="card-content">
+<h3>مشروع تطبيق إلكتروني</h3>
+<p>اسم الطالبة: يضاف هنا</p>
+<p>وصف المشروع: اكتبي نبذة عن فكرة المشروع.</p>
+<a href="#" target="_blank">عرض المشروع</a>
+</div>
+</div>
+
+</div>
+</div>
+
+<footer>
+<p>معرض إبداع الطالبات © 2026</p>
+<p>إشراف المعلمة</p>
+</footer>
+
+<script>
+function searchProjects(){
+ let value=document.getElementById("search").value.toLowerCase();
+ document.querySelectorAll(".card").forEach(card=>{
+ card.style.display=card.innerText.toLowerCase().includes(value)?"block":"none";
+ });
+}
+</script>
+
+</body>
+</html>
